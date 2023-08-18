@@ -1,0 +1,31 @@
+{% extends 'base/main.html' %}
+{% block content %}
+<div class="header">
+    <h1>🐦 Witter   </h1>
+</div>
+
+<div class="line"></div>
+
+<div class="logout-button">
+    {% if user.is_authenticated %}
+    <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</div>
+
+
+<h2>Posts</h2> <a class="create-post-button", href="{% url 'create-post' %}">Create Post</a>
+<hr>
+{% for posts in home %}
+<div class="body">
+    <a class="user-info">@{{posts.user}}</a>
+    <a class="text", href="{% url 'post' posts.id %}"><h4>{{posts.title}}</h4></a>
+    <a class="button", href="{% url 'delete-post' posts.id %}">Delete</a>
+</div>
+<hr>
+{% endfor %}
+
+
+
+{% endblock content %}
