@@ -1,9 +1,10 @@
 {% extends 'base/main.html' %}
 {% block content %}
 
+<header>
 <a href="{% url 'home' %}"><h1>🐦</h1></a>
 <h1>Login</h1>
-
+</header>
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}

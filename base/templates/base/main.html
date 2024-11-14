@@ -4,167 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        .gradient-container {
-            height: 100%;
-            background: linear-gradient(135deg, #1DA1F2, #14171A);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .content {
-            text-align: center;
-            color: white;
-            padding: 20px;
-        }
-
-        .button {
-            border: none;
-            background-color: #1DA1F2;
-            color: white;
-            padding: 8px 20px;
-            font-size: 14px;
-            border-radius: 30px;
-            margin-left: 20px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-        }
-
-        .button:hover {
-            background-color: #FFB74D;
-            color: #333;
-        }
-
-        .body {
-            display: flex;
-            padding: 10;
-        }
-
-        .line {
-            border-bottom: 1px solid white;
-        }
-
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            color: white;
-            border-bottom: 1px solid white;
-        }
-        
-        .logout-button {
-            color: gold;
-            padding: 8px 20px;
-            font-size: 14px;
-        }
-
-        .create-post-button {
-            background-color: #1DA1F2;
-            color: white;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-        }
-
-        .create-post-button:hover {
-            background-color: #FFB74D;
-            color: #333;
-        }
-
-        a {
-            text-decoration: none;
-            color: #1DA1F2;
-            transition: color 0.5s ease-in-out;
-        }
-
-        a :hover {
-            color: gold;
-        }
-
-        .submit-button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-        }
-
-        .submit-button:hover {
-            background-color: #45a049;
-            color: #fff;
-        }
-
-                
-        .delete-button {
-            background-color: #FF5733;
-            color: white;
-            padding: 8px 15px;
-            font-size: 14px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-        }
-
-        .delete-button:hover {
-            background-color: #D42E00;
-            color: #fff;
-        }
-
-        .update-button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            color: #fff;
-            background-color: #3498db;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        .update-button:hover {
-            background-color: #2980b9;
-            transform: scale(1.05);
-        }
-
-        
-        .label {
-            margin-top: 15px;
-        }
-
-        .user-info {
-            font-weight: bold;
-            color: #BDC3C7;
-        }
-
-    </style>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css"> 
 </head>
 <body>
-<div class="gradient-container">
-    <div class="content">
+<main>
+    <article>
     {% block content %}
 
 
     {% endblock content %}
-    </div>
+    </article>
 </div>
 </body>
 </html>
+<s></s>

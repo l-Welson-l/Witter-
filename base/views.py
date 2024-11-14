@@ -2,13 +2,15 @@ from typing import Any, Dict, Set
 from django.forms.models import BaseModelForm
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView 
 from .models import posts, Reply
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, FormView, UpdateView
+from django.views.generic import View 
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import logout, authenticate
 from .form import ReplyForm
 
 
@@ -33,11 +35,15 @@ class RegisterPage(FormView):
     form_class = UserCreationForm
     success_url = reverse_lazy('home')
 
-    def form_valid(self, form):     
+    def form_valid(self, form):   
         user = form.save()
-        if user is not None:
-            login(self.request, user)
-        return super(RegisterPage, self).form_valid(form)
+        authenticate(self.request, username=user.username, password=user.password)
+        
+        return super().form_valid(form)
+        # user = form.save()
+        # if user is not None:
+        #     login(self.request, user)
+        # return super(RegisterPage, self).form_valid(form)
 
 
 class PostDetail(DetailView):
@@ -85,9 +91,19 @@ class DeletePost(DeleteView):
     success_url = reverse_lazy('home')
 
 
-class LogoutPage(LogoutView):
-    template_name = 'base/logout.html'
-    model = posts
+# class LogoutPage(LogoutView):
+#     template_name = 'base/logout.html'
+#     model = posts
+
+class LogoutPage(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'base/logout.html')
+    
+    def post(self, request, *args, **kwargs):
+        logout(request)
+
+        return redirect("home")
+
 
 class ReplyPost(CreateView):
     template_name = 'base/reply.html'
