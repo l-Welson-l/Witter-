@@ -10,7 +10,7 @@ from django.views.generic.edit import CreateView, DeleteView, FormView, UpdateVi
 from django.views.generic import View 
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import logout, authenticate
+from django.contrib.auth import logout, authenticate, login
 from .form import ReplyForm
 
 
@@ -21,7 +21,7 @@ class home(ListView):
 
 
 
-class login(LoginView):
+class user_login(LoginView):
     template_name = 'base/login.html'
     model = posts
 
@@ -34,16 +34,16 @@ class RegisterPage(FormView):
     template_name = 'base/register.html'
     form_class = UserCreationForm
     success_url = reverse_lazy('home')
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
     def form_valid(self, form):   
         # user = form.save()
         # authenticate(self.request, username=user.username, password=user.password)
         
         # return super().form_valid(form)
         user = form.save()
-        # if user:
-        #     login(self.request, user)
+        if user:
+            login(self.request, user)
         return super().form_valid(form)
 
 
